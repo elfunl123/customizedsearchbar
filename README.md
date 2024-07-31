@@ -19,7 +19,7 @@ Elif Köser | info@technerd.dev
 1. Add the latest version of package to your pubspec.yaml (and run `dart pub get`):
 ```yaml
 dependencies:
-  customized_search_bar: ^0.0.2
+  customized_search_bar: ^0.0.5
 ```
 2.Import the package and use it in your Flutter App.
 ```dart

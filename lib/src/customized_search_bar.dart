@@ -81,7 +81,7 @@ class _CustomizedSearchBarState extends State<CustomizedSearchBar> {
     _focusNode.addListener(() {
       setState(() {
         _borderColor =
-        _focusNode.hasFocus ? widget.focusedBorderColor : Colors.grey;
+            _focusNode.hasFocus ? widget.focusedBorderColor : Colors.grey;
       });
     });
   }
@@ -101,7 +101,7 @@ class _CustomizedSearchBarState extends State<CustomizedSearchBar> {
       onChanged: (value) {
         List<String> results = widget.searchList
             .where((element) =>
-            element.toLowerCase().contains(value.toLowerCase()))
+                element.toLowerCase().contains(value.toLowerCase()))
             .toList();
         widget.onSearchResultChanged(results);
       },
@@ -116,15 +116,15 @@ class _CustomizedSearchBarState extends State<CustomizedSearchBar> {
         suffixIcon: widget.searchController.text.isEmpty
             ? null
             : InkWell(
-          onTap: () {
-            widget.searchController.clear();
-            widget.onSearchResultChanged(widget.searchList);
-          },
-          child: Icon(
-            widget.suffixIcon,
-            size: widget.suffixIconSize,
-          ),
-        ),
+                onTap: () {
+                  widget.searchController.clear();
+                  widget.onSearchResultChanged(widget.searchList);
+                },
+                child: Icon(
+                  widget.suffixIcon,
+                  size: widget.suffixIconSize,
+                ),
+              ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(widget.borderRadiusValue),

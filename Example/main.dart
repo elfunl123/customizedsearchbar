@@ -22,7 +22,15 @@ class SearchBarDemo extends StatefulWidget {
 
 class _SearchBarDemoState extends State<SearchBarDemo> {
   final TextEditingController searchController = TextEditingController();
-  final List<String> fruitList = ['Apple', 'Banana', 'Orange', 'Grape', 'Pineapple', 'Strawberry', 'Watermelon'];
+  final List<String> fruitList = [
+    'Apple',
+    'Banana',
+    'Orange',
+    'Grape',
+    'Pineapple',
+    'Strawberry',
+    'Watermelon'
+  ];
   List<String> displayedFruits = [];
 
   @override

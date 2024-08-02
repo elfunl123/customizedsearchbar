@@ -1,0 +1,22 @@
+name: customized_search_bar_example
+description: An example Flutter application demonstrating the usage of the customized_search_bar package.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.3 <4.0.0"
+  flutter: ">=3.22.3"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  customized_search_bar: ^0.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

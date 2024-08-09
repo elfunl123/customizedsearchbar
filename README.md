@@ -8,19 +8,19 @@ Elif Köser | info@technerd.dev
 
 ## Features
 
-- **Real-Time Search Filtering:** Automatically filter a list of items based on the user's input.
-- **Voice Search Feature**: You can search by voice thanks to the microphone icon in the search bar.
-- **Clear Search Functionality:** Clear the search input with a suffix icon button.
-- **Customizable Hint Text:** Set a custom hint text for the search bar.
-- **Customizable Icons:** Add icons to the start and end of the search bar, with customizable size and color.
-- **Customizable Border Features:** Set the border features of the search bar.
+- **Voice Search Feature**: You can search by voice thanks to the microphone icon in the search bar. (1.0.0 version)
+- **Real-Time Search Filtering:** Automatically filter a list of items based on the user's input. (0.0.6 version and after)
+- **Clear Search Functionality:** Clear the search input with a suffix icon button. (0.0.6 version and after)
+- **Customizable Hint Text:** Set a custom hint text for the search bar. (0.0.6 version and after)
+- **Customizable Icons:** Add icons to the start and end of the search bar, with customizable size and color. (0.0.6 version and after)
+- **Customizable Border Features:** Set the border features of the search bar. (0.0.6 version and after)
 
 ## Installation
 
 1. Add the latest version of package to your pubspec.yaml (and run `dart pub get`):
 ```yaml
 dependencies:
-  customized_search_bar: ^0.0.9
+  customized_search_bar: ^1.0.0
 ```
 2. Import the package and use it in your Flutter App.
 ```dart
@@ -29,7 +29,8 @@ import 'package:customized_search_bar/customized_search_bar.dart';
 
 ## Permissions Required
 
-Before using this package, certain permissions need to be added for your Android and iOS applications. These permissions are for accessing your phone's microphone. Below, you will find where and how to add these permissions to your files.
+- If you use 0.0.6 version, you don't need add permissions.
+- If you use 1.0.0 version, you need to add permissions for your Android and iOS applications before using this package. These permissions are for accessing your phone's microphone. Below, you will find where and how to add these permissions to your files.
 
 ### Android Permission
 
@@ -54,7 +55,7 @@ Steps:
 <string>Permission to use the phone's microphone is required for the voice search feature of the search bar.</string>
 ```
 
-### Usage Example
+## Usage Example
 ```dart
 CustomizedSearchBar(
     hintText: 'Search for fruits...',
@@ -203,7 +204,10 @@ class _SearchBarDemoState extends State<SearchBarDemo> {
 
 ## Example Video
 
-You can watch video on **https://youtube.com/shorts/mYDT8RUpy9g?feature=share** if you want to to see what the search bar looks like and how it works.
+1. If you use 0.0.6 version:
+You can watch video on **https://youtube.com/shorts/EWt2hVrAg2k** if you want to see what the search bar looks like and how it works.
+2. If you use 1.0.0 version:
+You can watch video on **https://youtube.com/shorts/mYDT8RUpy9g** if you want to see what the search bar looks like and how it works.
 
 ## Contributing
 

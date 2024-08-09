@@ -106,7 +106,7 @@ class _CustomizedSearchBarState extends State<CustomizedSearchBar> {
     _focusNode.addListener(() {
       setState(() {
         _borderColor =
-        _focusNode.hasFocus ? widget.focusedBorderColor : Colors.grey;
+            _focusNode.hasFocus ? widget.focusedBorderColor : Colors.grey;
       });
     });
   }
@@ -145,15 +145,16 @@ class _CustomizedSearchBarState extends State<CustomizedSearchBar> {
             widget.searchController.text = val.recognizedWords;
             List<String> results = widget.searchList
                 .where((element) => element
-                .toLowerCase()
-                .contains(val.recognizedWords.toLowerCase()))
+                    .toLowerCase()
+                    .contains(val.recognizedWords.toLowerCase()))
                 .toList();
             widget.onSearchResultChanged(results);
           });
         },
       );
     } else {
-      print("Voice search could not be started. Microphone access may not have been granted.");
+      print(
+          "Voice search could not be started. Microphone access may not have been granted.");
     }
   }
 
@@ -187,7 +188,7 @@ class _CustomizedSearchBarState extends State<CustomizedSearchBar> {
       onChanged: (value) {
         List<String> results = widget.searchList
             .where((element) =>
-            element.toLowerCase().contains(value.toLowerCase()))
+                element.toLowerCase().contains(value.toLowerCase()))
             .toList();
         widget.onSearchResultChanged(results);
       },
@@ -230,7 +231,8 @@ class _CustomizedSearchBarState extends State<CustomizedSearchBar> {
           onPressed: _isListening ? _stopVoiceSearch : _startVoiceSearch,
         );
       } else {
-        return Icon( // Default suffix icon
+        return Icon(
+          // Default suffix icon
           widget.suffixIcon ?? Icons.clear,
           size: widget.suffixIconSize,
         );

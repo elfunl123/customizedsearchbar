@@ -20,7 +20,7 @@ Elif Köser | info@technerd.dev
 1. Add the latest version of package to your pubspec.yaml (and run `dart pub get`):
 ```yaml
 dependencies:
-  customized_search_bar: ^0.0.7
+  customized_search_bar: ^0.0.8
 ```
 2. Import the package and use it in your Flutter App.
 ```dart
@@ -52,14 +52,6 @@ Steps:
 ```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>Permission to use the phone's microphone is required for the voice search feature of the search bar.</string>
-```
-
-### iOS Permission
-
-You need to add the following permission to your Android application's `AndroidManifest.xml` file:
-
-```xml
-<uses-permission android:name="android.permission.RECORD_AUDIO"/>
 ```
 
 ### Usage Example

@@ -9,7 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Customized Search Bar Example',
+      title: 'Customized Search Bar with Voice Search',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: SearchBarDemo(),
     );
   }
@@ -57,14 +60,18 @@ class _SearchBarDemoState extends State<SearchBarDemo> {
           children: [
             CustomizedSearchBar(
               hintText: 'Search for fruits...',
+              speakHintText: "Speak to search",
               prefixIcon: Icons.search,
               suffixIcon: Icons.clear,
+              voiceIcon: Icons.mic,
               prefixIconColor: Colors.blueAccent,
               suffixIconColor: Colors.red,
+              voiceIconColor: Colors.pinkAccent,
               cursorColor: Colors.green,
               focusedBorderColor: Colors.deepPurpleAccent,
               prefixIconSize: 35.0,
               suffixIconSize: 35.0,
+              voiceIconSize: 35.0,
               borderRadiusValue: 30.0,
               borderWidth: 3.0,
               searchList: fruitList,

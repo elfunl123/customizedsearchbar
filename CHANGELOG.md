@@ -1,3 +1,3 @@
-## 0.0.6
+## 0.0.7
 
-Searchable and customizable search bar.
+Searchable and customizable search bar. Two different search features: by typing and by voice.

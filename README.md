@@ -9,9 +9,10 @@ Elif Köser | info@technerd.dev
 ## Features
 
 - **Real-Time Search Filtering:** Automatically filter a list of items based on the user's input.
+- **Voice Search Feature**: You can search by voice thanks to the microphone icon in the search bar.
 - **Clear Search Functionality:** Clear the search input with a suffix icon button.
 - **Customizable Hint Text:** Set a custom hint text for the search bar.
-- **Prefix and Suffix Icons:** Add icons to the start and end of the search bar, with customizable size and color.
+- **Customizable Icons:** Add icons to the start and end of the search bar, with customizable size and color.
 - **Customizable Border Features:** Set the border features of the search bar.
 
 ## Installation
@@ -19,30 +20,69 @@ Elif Köser | info@technerd.dev
 1. Add the latest version of package to your pubspec.yaml (and run `dart pub get`):
 ```yaml
 dependencies:
-  customized_search_bar: ^0.0.5
+  customized_search_bar: ^0.0.7
 ```
-2.Import the package and use it in your Flutter App.
+2. Import the package and use it in your Flutter App.
 ```dart
 import 'package:customized_search_bar/customized_search_bar.dart';
 ```
 
-## Usage Example
+## Permissions Required
+
+Before using this package, certain permissions need to be added for your Android and iOS applications. These permissions are for accessing your phone's microphone. Below, you will find where and how to add these permissions to your files.
+
+### Android Permission
+
+Steps:
+
+1. Open `android/app/src/main/AndroidManifest.xml` file.
+
+2. Add the following permission just below the `<manifest>` tag:
+```xml
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+```
+
+### iOS Permission
+
+Steps:
+
+1. Open `iOS/Runner/Info.plist` file.
+
+2. Add the following permission just below the `<dict>` tag:
+```xml
+<key>NSMicrophoneUsageDescription</key>
+<string>Permission to use the phone's microphone is required for the voice search feature of the search bar.</string>
+```
+
+### iOS Permission
+
+You need to add the following permission to your Android application's `AndroidManifest.xml` file:
+
+```xml
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+```
+
+### Usage Example
 ```dart
 CustomizedSearchBar(
-      hintText: 'Search for fruits...',
-      prefixIcon: Icons.search,
-      suffixIcon: Icons.clear,
-      prefixIconColor: Colors.blueAccent,
-      suffixIconColor: Colors.red,
-      cursorColor: Colors.green,
-      focusedBorderColor: Colors.deepPurpleAccent,
-      prefixIconSize: 35.0,
-      suffixIconSize: 35.0,
-      borderRadiusValue: 30.0,
-      borderWidth: 3.0,
-      searchList: fruitList,
-      onSearchResultChanged: updateSearchResults,
-      searchController: searchController,
+    hintText: 'Search for fruits...',
+    speakHintText: "Speak to search",
+    prefixIcon: Icons.search,
+    suffixIcon: Icons.clear,
+    voiceIcon: Icons.mic,
+    prefixIconColor: Colors.blueAccent,
+    suffixIconColor: Colors.red,
+    voiceIconColor: Colors.pinkAccent,
+    cursorColor: Colors.green,
+    focusedBorderColor: Colors.deepPurpleAccent,
+    prefixIconSize: 35.0,
+    suffixIconSize: 35.0,
+    voiceIconSize: 35.0,
+    borderRadiusValue: 30.0,
+    borderWidth: 3.0,
+    searchList: fruitList,
+    onSearchResultChanged: updateSearchResults,
+    searchController: searchController,
 ),
 ```
 
@@ -59,7 +99,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Customized Search Bar Example',
+      title: 'Customized Search Bar with Voice Search',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: SearchBarDemo(),
     );
   }
@@ -72,7 +115,15 @@ class SearchBarDemo extends StatefulWidget {
 
 class _SearchBarDemoState extends State<SearchBarDemo> {
   final TextEditingController searchController = TextEditingController();
-  final List<String> fruitList = ['Apple', 'Banana', 'Orange', 'Grape', 'Pineapple', 'Strawberry', 'Watermelon'];
+  final List<String> fruitList = [
+    'Apple',
+    'Banana',
+    'Orange',
+    'Grape',
+    'Pineapple',
+    'Strawberry',
+    'Watermelon'
+  ];
   List<String> displayedFruits = [];
 
   @override
@@ -99,14 +150,18 @@ class _SearchBarDemoState extends State<SearchBarDemo> {
           children: [
             CustomizedSearchBar(
               hintText: 'Search for fruits...',
+              speakHintText: "Speak to search",
               prefixIcon: Icons.search,
               suffixIcon: Icons.clear,
+              voiceIcon: Icons.mic,
               prefixIconColor: Colors.blueAccent,
               suffixIconColor: Colors.red,
+              voiceIconColor: Colors.pinkAccent,
               cursorColor: Colors.green,
               focusedBorderColor: Colors.deepPurpleAccent,
               prefixIconSize: 35.0,
               suffixIconSize: 35.0,
+              voiceIconSize: 35.0,
               borderRadiusValue: 30.0,
               borderWidth: 3.0,
               searchList: fruitList,
@@ -135,24 +190,28 @@ class _SearchBarDemoState extends State<SearchBarDemo> {
 
 ## Parameters
 
-- `hintText`: The hint text to display inside the search bar.
-- `prefixIcon`: The icon to display at the beginning of the search bar.
-- `suffixIcon`: The icon to display at the end of the search bar, used to clear the search input.
-- `prefixIconColor`: The color of the prefix icon.
-- `suffixIconColor`: The color of the suffix icon.
-- `focusedBorderColor`: The color of the border when the search bar is focused.
-- `cursorColor`: The color of the cursor inside the search bar.
-- `prefixIconSize`: The size of the prefix icon.
-- `suffixIconSize`: The size of the suffix icon.
-- `borderRadiusValue`: The border radius of the search bar.
-- `borderWidth`: The width of the border when the search bar is focused.
-- `searchList`: The list of items to search from.
-- `onSearchResultChanged`: The callback function to handle changes in search results.
-- `searchController`: The controller to manage the search input.
+- `hintText` (`String`, required): The initial placeholder text displayed in the search bar.
+- `speakHintText` (`String`, required): The placeholder text displayed when voice search is activated.
+- `prefixIcon` (`IconData?`, optional): The icon displayed at the start (left side) of the search bar.
+- `suffixIcon` (`IconData?`, optional): The icon displayed at the end (right side) of the search bar.
+- `voiceIcon` (`IconData?`, optional): The icon used for the voice search button.
+- `prefixIconColor` (`Color`, required): The color of the prefix icon.
+- `suffixIconColor` (`Color`, required): The color of the suffix icon.
+- `voiceIconColor` (`Color`, required): The color of the voice search icon.
+- `focusedBorderColor` (`Color`, required): The border color of the search bar when it is focused.
+- `cursorColor` (`Color`, required): The color of the cursor.
+- `prefixIconSize` (`double`, required): The size of the prefix icon.
+- `suffixIconSize` (`double`, required): The size of the suffix icon.
+- `voiceIconSize` (`double`, required): The size of the voice search icon.
+- `borderRadiusValue` (`double`, required): The corner radius of the search bar.
+- `borderWidth` (`double`, required): The width of the search bar border.
+- `searchList` (`List<String>`, required): The list of items to be searched.
+- `onSearchResultChanged` (`ValueChanged<List<String>>`, required): The callback function triggered when the search results change.
+- `searchController` (`TextEditingController`, required): The text controller for managing the search input.
 
 ## Example Video
 
-You can watch video on **https://youtube.com/shorts/EWt2hVrAg2k?feature=share** if you want to to see what the search bar looks like and how it works.
+You can watch video on **https://youtube.com/shorts/mYDT8RUpy9g?feature=share** if you want to to see what the search bar looks like and how it works.
 
 ## Contributing
 

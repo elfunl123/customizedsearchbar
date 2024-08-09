@@ -1,6 +1,6 @@
 name: customized_search_bar
 description: A customizable search bar widget for Flutter applications, providing enhanced search functionality with additional features.
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/elfunl123/customizedsearchbar
 
 environment:
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  speech_to_text: ^6.6.2
 
 dev_dependencies:
   flutter_test:
